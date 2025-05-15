@@ -1,6 +1,5 @@
 import React from 'react';
 import {Pressable, Text, ViewStyle} from 'react-native';
-import {scaleHeight, scaleWidth} from 'src/utils/DimensionEditor';
 import styles from './styles';
 
 interface ButtonProps {

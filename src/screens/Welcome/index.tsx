@@ -6,8 +6,14 @@ import OnboardingPlant from 'src/assets/images/OnboardingPlant.png';
 import styles from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Button from 'src/components/Button';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {OnboardingStackParams} from 'src/navigation/OnboardingStack';
 
 const Welcome = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<OnboardingStackParams>>();
+
   const renderTermsOfUse = () => {
     return (
       <View style={styles.container}>
@@ -28,6 +34,10 @@ const Welcome = () => {
     );
   };
 
+  const onGetStartedButtonPress = () => {
+    navigation.navigate('Onboarding');
+  };
+
   return (
     <ImageBackground
       source={OnboardingBackground}
@@ -40,7 +50,7 @@ const Welcome = () => {
           Identify more than 3000+ plants and 88% accuracy.
         </Text>
         <Image source={OnboardingPlant} style={styles.plantImage} />
-        <Button onPress={() => {}} title="Get Started" />
+        <Button onPress={onGetStartedButtonPress} title="Get Started" />
         {renderTermsOfUse()}
       </SafeAreaView>
     </ImageBackground>

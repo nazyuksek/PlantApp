@@ -1,13 +1,11 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Welcome from '../screens/Welcome';
-
-export type RootStackParamList = {};
+import OnboardingStack from './OnboardingStack';
 
 const RootStack = () => {
   return (
     <NavigationContainer>
-      <Welcome />
+      <OnboardingStack />
     </NavigationContainer>
   );
 };
