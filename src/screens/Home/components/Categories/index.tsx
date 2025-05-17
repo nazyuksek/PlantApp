@@ -2,11 +2,11 @@ import React from 'react';
 import {FlatList, ImageBackground, Text} from 'react-native';
 import {scaleHeight, scaleWidth} from 'src/utils/DimensionEditor';
 import styles from './styles';
-import {Category, CategoryResponse} from 'src/models/Category';
+import {Category} from 'src/models/Category';
 import {capitalizeFirstChar, removeDash} from 'src/utils/Helper';
 
 interface CategoriesProps {
-  categoriesData?: CategoryResponse;
+  categoriesData?: Category[];
 }
 
 interface GridItemProps {
@@ -31,7 +31,7 @@ const Categories: React.FC<CategoriesProps> = ({categoriesData}) => {
       nestedScrollEnabled
       scrollEnabled={false}
       keyExtractor={(_, index) => index.toString()}
-      data={categoriesData?.data}
+      data={categoriesData}
       numColumns={2}
       columnWrapperStyle={{
         gap: scaleWidth(11),

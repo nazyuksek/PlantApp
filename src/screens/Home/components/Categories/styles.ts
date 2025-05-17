@@ -4,7 +4,7 @@ import {scaleHeight, scaleWidth} from 'src/utils/DimensionEditor';
 const styles = StyleSheet.create({
   listContainer: {
     gap: scaleWidth(11),
-    alignItems: 'center',
+    paddingLeft: scaleWidth(24),
   },
   gridItem: {
     height: scaleHeight(158),
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   categoryTitle: {
     paddingTop: scaleHeight(16),
     paddingLeft: scaleWidth(16),
-    maxWidth: '75%',
+    maxWidth: '90%',
     fontSize: scaleHeight(16),
     lineHeight: scaleHeight(22),
     fontFamily: 'Rubik-Medium',
