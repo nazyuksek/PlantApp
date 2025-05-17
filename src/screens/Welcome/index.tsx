@@ -1,14 +1,13 @@
 import React from 'react';
 import {Image, ImageBackground, Text, View} from 'react-native';
 
-import OnboardingBackground from 'src/assets/images/OnboardingBackground.png';
-import OnboardingPlant from 'src/assets/images/OnboardingPlant.png';
 import styles from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Button from 'src/components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {OnboardingStackParams} from 'src/navigation/OnboardingStack';
+import images from '../../assets/index';
 
 const Welcome = () => {
   const navigation =
@@ -40,7 +39,7 @@ const Welcome = () => {
 
   return (
     <ImageBackground
-      source={OnboardingBackground}
+      source={images.OnboardingBackground}
       style={styles.backgroundImage}>
       <SafeAreaView style={styles.container}>
         <Text style={styles.title}>
@@ -49,7 +48,7 @@ const Welcome = () => {
         <Text style={styles.description}>
           Identify more than 3000+ plants and 88% accuracy.
         </Text>
-        <Image source={OnboardingPlant} style={styles.plantImage} />
+        <Image source={images.OnboardingPlant} style={styles.plantImage} />
         <Button onPress={onGetStartedButtonPress} title="Get Started" />
         {renderTermsOfUse()}
       </SafeAreaView>

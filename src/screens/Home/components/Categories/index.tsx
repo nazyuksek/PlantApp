@@ -34,7 +34,7 @@ const Categories: React.FC<CategoriesProps> = ({categoriesData}) => {
       data={categoriesData}
       numColumns={2}
       columnWrapperStyle={{
-        gap: scaleWidth(11),
+        justifyContent: 'space-between',
       }}
       contentContainerStyle={styles.listContainer}
       showsHorizontalScrollIndicator={false}

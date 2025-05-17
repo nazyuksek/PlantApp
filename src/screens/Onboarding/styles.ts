@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   },
   titleWrapper: {
     marginTop: scaleHeight(24),
-    justifyContent: 'center',
   },
   title: {
     fontSize: scaleHeight(28),
@@ -25,6 +24,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik-Bold',
     color: colors.MainColor,
     textAlign: 'center',
+  },
+  titleBeforeUnderlinedText: {
+    fontSize: scaleHeight(28),
+    fontFamily: 'Rubik-Medium',
+    color: colors.MainColor,
   },
   underline: {
     position: 'absolute',
@@ -47,6 +51,7 @@ const styles = StyleSheet.create({
   imagesContainer: {
     width: '100%',
     alignItems: 'center',
+    flex: 1,
   },
   buttonContainer: {
     paddingHorizontal: scaleWidth(24),
@@ -63,11 +68,23 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   paginationContainer: {
-    height: 20,
-    width: 20,
-    backgroundColor: 'red',
     alignSelf: 'center',
     marginTop: scaleHeight(30),
+    flexDirection: 'row',
+    gap: scaleWidth(8),
+    alignItems: 'center',
+  },
+  selectedPaginationDot: {
+    width: scaleWidth(10),
+    height: scaleHeight(10),
+    backgroundColor: 'rgba(19, 35, 27, 1)',
+    borderRadius: '100%',
+  },
+  paginationDot: {
+    width: scaleWidth(6),
+    height: scaleHeight(6),
+    backgroundColor: 'rgba(19, 35, 27, 0.25)',
+    borderRadius: '100%',
   },
 });
 

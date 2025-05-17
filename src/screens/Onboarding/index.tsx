@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {FlatList, Image, ImageBackground, Text, View} from 'react-native';
 
-import OnboardingBackground from 'src/assets/images/OnboardingBackground.png';
-import Underline from 'src/assets/images/Underline.png';
-import Onboarding1 from 'src/assets/images/Onboarding1.png';
-import Onboarding2Phone from 'src/assets/images/Onboarding2Phone.png';
-import Onboarding2Leaves from 'src/assets/images/Onboarding2Leaves.png';
-import Onboarding1Plants from 'src/assets/images/Onboarding2Plants.png';
+import images from '../../assets/index';
 
 import styles from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Button from 'src/components/Button';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {OnboardingStackParams} from 'src/navigation/OnboardingStack';
+import Screens from 'src/navigation/constants';
 
 type OnboardingDataType = {
   titleBeforeUnderlinedText: string;
@@ -26,27 +25,50 @@ const OnboardingData: OnboardingDataType[] = [
     titleBeforeUnderlinedText: 'Take a photo to ',
     underlinedText: 'identify',
     titleAfterUnderlinedText: ' the plant!',
-    phoneImage: Onboarding1,
+    phoneImage: images.Onboarding1,
   },
   {
     titleBeforeUnderlinedText: 'Get plant ',
     underlinedText: 'care guides',
-    phoneImage: Onboarding2Phone,
-    bgImage: Onboarding2Leaves,
-    topRightImage: Onboarding1Plants,
+    phoneImage: images.Onboarding2Phone,
+    bgImage: images.Onboarding2Leaves,
+    topRightImage: images.Onboarding2Plants,
   },
 ];
 
 const Onboarding = () => {
-  const renderItem = ({item}) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<OnboardingStackParams>>();
+  const flatListRef = useRef<FlatList>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const scrollToIndex = (index: number) => {
+    if (flatListRef.current) {
+      flatListRef.current.scrollToIndex({animated: true, index});
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < OnboardingData.length - 1) {
+      const newIndex = currentIndex + 1;
+      setCurrentIndex(newIndex);
+      scrollToIndex(newIndex);
+    }
+  };
+
+  const renderItem = ({item}: {item: OnboardingDataType}) => {
     return (
       <View style={styles.itemContainer}>
         <View style={styles.titleWrapper}>
           <Text style={styles.title}>
-            {item.titleBeforeUnderlinedText}
+            <View>
+              <Text style={styles.titleBeforeUnderlinedText}>
+                {item.titleBeforeUnderlinedText}
+              </Text>
+            </View>
             <View style={styles.underlinedTextContainer}>
               <Text style={styles.underlinedText}>{item.underlinedText}</Text>
-              <Image source={Underline} style={styles.underline} />
+              <Image source={images.Underline} style={styles.underline} />
             </View>
           </Text>
           <Text style={styles.title}>{item.titleAfterUnderlinedText}</Text>
@@ -60,9 +82,17 @@ const Onboarding = () => {
     );
   };
 
+  const onContinueButtonPress = () => {
+    if (currentIndex < OnboardingData.length - 1) {
+      handleNext();
+      return;
+    }
+    navigation.navigate(Screens.Paywall);
+  };
+
   return (
     <ImageBackground
-      source={OnboardingBackground}
+      source={images.OnboardingBackground}
       style={styles.backgroundImage}>
       <SafeAreaView style={styles.container}>
         <FlatList
@@ -71,11 +101,35 @@ const Onboarding = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           pagingEnabled
+          scrollEnabled={false}
+          ref={flatListRef}
         />
         <View style={styles.buttonContainer}>
-          <Button onPress={() => {}} title="Continue" />
+          <Button onPress={onContinueButtonPress} title="Continue" />
         </View>
-        <View style={styles.paginationContainer}></View>
+        <View style={styles.paginationContainer}>
+          <View
+            style={
+              currentIndex === 0
+                ? styles.selectedPaginationDot
+                : styles.paginationDot
+            }
+          />
+          <View
+            style={
+              currentIndex === 1
+                ? styles.selectedPaginationDot
+                : styles.paginationDot
+            }
+          />
+          <View
+            style={
+              currentIndex === 2
+                ? styles.selectedPaginationDot
+                : styles.paginationDot
+            }
+          />
+        </View>
       </SafeAreaView>
     </ImageBackground>
   );

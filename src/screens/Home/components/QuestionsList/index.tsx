@@ -53,13 +53,20 @@ const QuestionsList: React.FC<QuestionsListProps> = ({questionsData}) => {
           <QuestionItem
             item={item}
             onPress={() => {
-              if (!selectedUri) return;
-              handleOpenSheet(selectedUri);
+              handleOpenSheet(item.uri);
             }}
           />
         )}
       />
-      <WebViewBottomSheet ref={bottomSheetRef} uri={selectedUri} />
+      <View
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}>
+        <WebViewBottomSheet ref={bottomSheetRef} uri={selectedUri} />
+      </View>
     </>
   );
 };

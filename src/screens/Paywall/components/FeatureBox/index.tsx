@@ -1,10 +1,10 @@
 import React from 'react';
 import {ImageBackground, Text, View} from 'react-native';
-import FeatureBoxBackground from 'src/assets/images/FeatureBoxBackground.png';
 import styles from './styles';
 import Icon from 'src/components/Icon';
 import {scaleWidth} from 'src/utils/DimensionEditor';
 import {IconKeys} from 'src/assets/icons';
+import images from '../../../../assets/index';
 
 interface FeatureBoxProps {
   title: string;
@@ -19,7 +19,7 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
 }) => {
   return (
     <ImageBackground
-      source={FeatureBoxBackground}
+      source={images.FeatureBoxBackground}
       style={styles.backgroundImage}>
       <View style={styles.container}>
         <Icon

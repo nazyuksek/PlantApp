@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {FlatList, ImageBackground, Pressable, Text, View} from 'react-native';
 import styles from './styles';
-import PaywallBackground from 'src/assets/images/PaywallBackground.png';
 import FeatureBox from './components/FeatureBox';
 import PriceCheckBox from './components/PriceCheckBox';
 import Button from 'src/components/Button';
@@ -10,6 +9,7 @@ import {Cross} from 'src/assets/icons/Cross';
 import {scaleHeight} from 'src/utils/DimensionEditor';
 import {completeOnboarding} from 'src/store/onboardingSlice';
 import {useAppDispatch} from 'src/hooks/useRedux';
+import images from '../../assets/index';
 
 interface FeatureBoxDataType {
   title: string;
@@ -50,7 +50,7 @@ const Paywall = () => {
   return (
     <View style={[styles.container]}>
       <ImageBackground
-        source={PaywallBackground}
+        source={images.PaywallBackground}
         style={styles.backgroundImage}>
         <Pressable
           style={[styles.crossIcon, {top: insets.top + scaleHeight(8)}]}
