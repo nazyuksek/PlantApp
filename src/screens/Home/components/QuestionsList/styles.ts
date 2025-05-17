@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   contentStyle: {
-    paddingLeft: scaleWidth(24),
+    paddingHorizontal: scaleWidth(24),
     gap: 10,
   },
   title: {
