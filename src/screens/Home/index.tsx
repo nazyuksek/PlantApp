@@ -1,4 +1,10 @@
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import {scaleHeight} from 'src/utils/DimensionEditor';
 import {styles, welcomeTextStyles} from './styles';
 import SearchBar from './components/SearchBar';
@@ -52,12 +58,24 @@ const Home = () => {
         <View style={styles.subscriptionContainer}>
           <Subscription onPress={() => {}} />
         </View>
-        <QuestionsList questionsData={questionsData} />
-        <Categories
-          categoriesData={
-            !plantQuery ? categoriesData?.data : filteredCategories
-          }
-        />
+        {!questionsError ? (
+          isQuestionsLoading ? (
+            <ActivityIndicator />
+          ) : (
+            <QuestionsList questionsData={questionsData} />
+          )
+        ) : null}
+        {!categoriesError ? (
+          isCategoriesLoading ? (
+            <ActivityIndicator />
+          ) : (
+            <Categories
+              categoriesData={
+                !plantQuery ? categoriesData?.data : filteredCategories
+              }
+            />
+          )
+        ) : null}
       </SafeAreaView>
     </ScrollView>
   );
