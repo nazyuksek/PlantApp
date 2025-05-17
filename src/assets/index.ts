@@ -7,4 +7,8 @@ export default {
   Onboarding2Leaves: require('./images/Onboarding2Leaves.png'),
   Onboarding2Plants: require('./images/Onboarding2Plants.png'),
   PaywallBackground: require('./images/PaywallBackground.png'),
+  FeatureBoxBackground: require('./images/FeatureBoxBackground.png'),
+  LeftDirectionLeaf: require('./images/LeftDirecitonLeaf.png'),
+  RightDirectionLeaf: require('./images/RightDirectionLeaf.png'),
+  PlantWithScanBackground: require('./images/PlantWithScanBackground.png'),
 };
