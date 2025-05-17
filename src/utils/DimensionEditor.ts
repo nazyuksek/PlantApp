@@ -24,12 +24,12 @@ class DimensionEditor {
   };
 }
 
-const ParamTechDimensionEditor = new DimensionEditor(
+const PlantAppDimensionEditor = new DimensionEditor(
   SCREEN_WIDTH,
   SCREEN_HEIGHT,
 );
 
-export const scaleWidth = ParamTechDimensionEditor.scaleWidth;
-export const scaleHeight = ParamTechDimensionEditor.scaleHeight;
+export const scaleWidth = PlantAppDimensionEditor.scaleWidth;
+export const scaleHeight = PlantAppDimensionEditor.scaleHeight;
 
-export {SCREEN_HEIGHT, SCREEN_WIDTH, ParamTechDimensionEditor};
+export {SCREEN_HEIGHT, SCREEN_WIDTH, PlantAppDimensionEditor};
