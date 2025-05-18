@@ -18,11 +18,8 @@ const PriceCheckBox: React.FC<PriceCheckBoxProps> = ({
     <Pressable
       style={isChecked ? styles.selectedContainer : styles.container}
       onPress={onPress}>
-      <BlurView
+      <View
         style={styles.blurContainer}
-        blurType="materialDark"
-        blurAmount={10}
-        reducedTransparencyFallbackColor="white"
       />
       <View style={styles.contentContainer}>
         {index === 1 && (

@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: scaleHeight(60),
     borderRadius: scaleWidth(14),
+    backgroundColor: 'rgba(26, 36, 32,1)'
   },
   contentContainer: {
     paddingVertical: scaleHeight(13),
